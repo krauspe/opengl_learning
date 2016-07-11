@@ -2,7 +2,9 @@ from OpenGL.GL import *
 from OpenGL.GLUT import *
 
 
-
+#
+# from http://noobtuts.com/python/opengl-introduction
+#
 # Creating the OpenGL Window
 #
 # So the first thing we want to do is create our window. We will need a window variable that holds our window id,
