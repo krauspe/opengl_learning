@@ -143,5 +143,5 @@ while not done:
 
     glFlush()
 
-    glDeleteTextures(texture)
+#    glDeleteTextures(texture)
     pygame.display.flip()

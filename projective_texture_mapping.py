@@ -26,7 +26,8 @@ import numpy
 
 import pygame  # just to get a display
 
-import Image
+from PIL import Image
+import PIL
 import sys
 import time
 
@@ -39,9 +40,8 @@ pygame.display.set_mode((800, 600), pygame.OPENGL | pygame.DOUBLEBUF)
 def jpg_file_write(name, number, data):
     im = Image.frombuffer("RGBA", (800, 600), data, "raw", "RGBA", 0, 0)
 
-
-fnumber = "%05d" % number
-im.save(name + fnumber + ".jpg")
+    fnumber = "%05d" % number
+    im.save(name + fnumber + ".jpg")
 
 
 # Create and Compile a shader
@@ -49,10 +49,8 @@ im.save(name + fnumber + ".jpg")
 
 def createAndCompileShader(type, source):
     shader = glCreateShader(type)
-
-
-glShaderSource(shader, source)
-glCompileShader(shader)
+    glShaderSource(shader, source)
+    glCompileShader(shader)
 
 # get "compile status" - glCompileShader will not fail with
 # an exception in case of syntax errors
@@ -61,7 +59,7 @@ result = glGetShaderiv(shader, GL_COMPILE_STATUS)
 
 if (result != 1):  # shader didn't compile
     raise Exception("Couldn't compile shader\nShader compilation Log:\n" + glGetShaderInfoLog(shader))
-return shader
+    return shader
 
 vertex_shader = createAndCompileShader(GL_VERTEX_SHADER, """
 
